@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相册</title>
+    <style type="text/css">
+    ul { padding: 0px; margin: 0px; }
+    ul li { list-style-type: none; border: 1px #CCC solid; width: 100px; height: 132px; text-align: center; line-height: 132px; margin-right: 5px; padding: 5px; }
+    ul li.current { border: 1px red solid; }
+    ul img { max-width: 100px; max-height: 132px; }
+    #preview img { width: 300px; height: 396px; }
+    .disable { visibility:hidden; }
+    </style>
+</head>
+<body>
+<ul id="gallery">
+    <li data-message="1" data-img="images/img1.jpg">
+    <img src="images/loading.gif" data-src="images/s_img1.jpg" alt="" />
+    </li>
+    <li data-message="2" data-img="images/img2.jpg">
+    <img src="images/loading.gif" data-src="images/s_img2.jpg" alt="" />
+    </li>
+    <li data-message="3" data-img="images/img3.jpg">
+    <img src="images/loading.gif" data-src="images/s_img3.jpg" alt="" />
+    </li>
+    <li data-message="4" data-img="images/img4.jpg">
+    <img src="images/loading.gif" data-src="images/s_img4.jpg" alt="" />
+    </li>
+    <li data-message="5" data-img="images/img5.jpg">
+    <img src="images/loading.gif" data-src="images/s_img5.jpg" alt="" />
+    </li>
+    <li data-message="6" data-img="images/img6.jpg">
+    <img src="images/loading.gif" data-src="images/s_img6.jpg" alt="" />
+    </li>
+    <li data-message="7" data-img="images/img7.jpg">
+    <img src="images/loading.gif" data-src="images/s_img7.jpg" alt="" />
+    </li>
+    <li data-message="8" data-img="images/img8.jpg">
+    <img src="images/loading.gif" data-src="images/s_img8.jpg" alt="" />
+    </li>
+    <li data-message="9" data-img="images/img9.jpg">
+    <img src="images/loading.gif" data-src="images/s_img9.jpg" alt="" />
+    </li>
+    <li data-message="10" data-img="images/img10.jpg">
+    <img src="images/loading.gif" data-src="images/s_img10.jpg" alt="" />
+    </li>
+</ul>
+<a id="previous_page" href="JavaScript:;">上一页</a>
+<a id="next_page" href="JavaScript:;">下一页</a>
+<div id="preview"><img src="images/loading.gif" alt="" /></div>
+<div id="message"></div>
+<a id="previous_image" href="JavaScript:;">上一张</a>
+<a id="next_image" href="JavaScript:;">下一张</a>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.gallery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#gallery").gallery({ 
+        show_item_count: 6,
+        width: 117,
+        btn_previous_page: '#previous_page',
+        btn_next_page: '#next_page',
+        btn_previous_image: '#previous_image',
+        btn_next_image: '#next_image',
+        image_lazy_load: true,
+        current_item_change_callback: function(index, $current_item) {
+            $("#message").html($current_item.attr('data-message'));
+            $("#preview").find('img').attr('src', $current_item.attr('data-img'));
+        }
+    });
+});
+</script>
+</body>
+</html>
